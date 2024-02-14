@@ -1,8 +1,18 @@
-import { useState } from 'react'
+import Header from "./components/Header"
+import Formulario from "./components/Formulario"
+import ListadoPaciente from "./components/ListadoPaciente"
+
+
 function App() {
+
   return (
     <>
-      <h1>Hola mundo</h1>
+      <Header />
+
+      <Formulario />
+
+      <ListadoPaciente/>
+      
     </>
   )
 }
