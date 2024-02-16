@@ -1,4 +1,4 @@
-import Header from "./components/Header"
+import Header from "./components/Header";
 import Formulario from "./components/Formulario"
 import ListadoPaciente from "./components/ListadoPaciente"
 
@@ -9,12 +9,11 @@ function App() {
   return (
     
     <>
-      
-      <Header />
-
-      <Formulario />
-
-      <ListadoPaciente/>
+      <div className="conteiner mx-auto mt-16">
+        <Header />
+        <Formulario />
+        <ListadoPaciente/>
+      </div>
       
     </>
   )
