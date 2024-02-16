@@ -3,10 +3,13 @@ import Formulario from "./components/Formulario"
 import ListadoPaciente from "./components/ListadoPaciente"
 
 
+
 function App() {
 
   return (
+    
     <>
+      
       <Header />
 
       <Formulario />
