@@ -14,7 +14,7 @@ function Formulario(){
                 </span>
             </p>
 
-            <form className="bg-white shadow-md rounded-lg py-5 px-5 mt-5 mb-20">
+            <form className="bg-white shadow-md rounded-lg py-5 px-5 mt-5 ml-8 mb-20">
                 <div>
                     <label htmlFor="nombreMascota" className="block text-gray-700 uppercase font-bold ">
                         Nombre de la mascota
