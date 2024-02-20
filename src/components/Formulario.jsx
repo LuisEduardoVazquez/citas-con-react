@@ -7,6 +7,22 @@ function Formulario(){
     const [fechaDeIngreso, setFechaDeIngreso] = useState('');
     const [sintomas, setSintomas] = useState('');
 
+    const [error, setError] = useState('');
+
+    const handleSubmit = (e) => {
+            e.preventDefault();
+
+            if( [nombreMascota, nombreDelPropietario, emailDelPropietario, fechaDeIngreso, sintomas].includes('') ){
+                console.log("Formulario incompleto");
+                setError(true);
+            }
+            else{
+                console.log("Formulario completo");
+                setError(false);
+            }
+        
+    }
+
     return(
         
 
@@ -23,7 +39,20 @@ function Formulario(){
                 </span>
             </p>
 
-            <form className="bg-white shadow-md rounded-lg py-5 px-5 mt-5 ml-8 mb-20">
+            <form
+                onSubmit={handleSubmit} 
+                className="bg-white shadow-md rounded-lg py-5 px-5 mt-5 ml-8 mb-20"
+            >
+                { error &&
+                    (
+                        <div className='text-white bg-red-800 text-center p-3 uppercase m-3 rounded-lg '>
+                            <p>
+                                Todos los campos son obligatorios
+                            </p>
+                        </div>
+                    )
+                }
+                    
                 <div>
                     <label htmlFor="nombreMascota" className="block text-gray-700 uppercase font-bold ">
                         Nombre de la mascota
@@ -36,7 +65,13 @@ function Formulario(){
                         type="text"
                         placeholder="Nombre de la mascota" 
                         value={nombreMascota}
-                        onChange = {(e) => setNombreMascota(e.target.value)}
+                        onChange = {
+                            function(e)
+                            {
+                                setNombreMascota(e.target.value)
+                            }
+                        }
+                        //onChange = {(e) => setNombreMascota(e.target.value)}
 
                     />
                 </div>
