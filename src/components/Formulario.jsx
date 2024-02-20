@@ -1,5 +1,14 @@
+import { useState, useEffect} from 'react';
+
 function Formulario(){
+    const [nombreMascota, setNombreMascota] = useState('');
+    const [nombreDelPropietario, setNombreDelPropietario] = useState('');
+    const [emailDelPropietario, setEmailDelPropietario] = useState('');
+    const [fechaDeIngreso, setFechaDeIngreso] = useState('');
+    const [sintomas, setSintomas] = useState('');
+
     return(
+        
 
         <div className="md:w-1/2 lg:w-2/5"> 
             <h1 className="font-black text-3xl text-center">
@@ -26,6 +35,8 @@ function Formulario(){
                         className=" border-2 w-full mt-2 p-2 rounded-md placeholder-gray-400"
                         type="text"
                         placeholder="Nombre de la mascota" 
+                        value={nombreMascota}
+                        onChange = {(e) => setNombreMascota(e.target.value)}
 
                     />
                 </div>
@@ -41,6 +52,8 @@ function Formulario(){
                         className=" border-2 w-full mt-2 p-2 rounded-md placeholder-gray-400"
                         type="text"
                         placeholder="Nombre del Propietario" 
+                        value={nombreDelPropietario}
+                        onChange = {(e) => setNombreDelPropietario(e.target.value)}
 
                     />
                 </div>
@@ -56,6 +69,8 @@ function Formulario(){
                         className=" border-2 w-full mt-2 p-2 rounded-md placeholder-gray-400"
                         type="email"
                         placeholder="Email del propietario" 
+                        value={emailDelPropietario}
+                        onChange = {(e) => setEmailDelPropietario(e.target.value)}
 
                     />
                 </div>
@@ -70,6 +85,8 @@ function Formulario(){
                         id="fechaDeIndreso"
                         className=" border-2 w-full mt-2 p-2 rounded-md placeholder-gray-400"
                         type="date"
+                        value={fechaDeIngreso}
+                        onChange = {(e) => setFechaDeIngreso(e.target.value)}
 
                     />
                 </div>
@@ -83,6 +100,8 @@ function Formulario(){
                         id= "sintomas" 
                         className=" border-2 w-full mt-2 p-2 rounded-md placeholder-gray-400"
                         placeholder="Descripcion de sintomas" 
+                        value={sintomas}
+                        onChange = {(e) => setSintomas(e.target.value)}
                     >
 
                     </textarea>

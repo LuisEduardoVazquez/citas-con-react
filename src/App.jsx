@@ -8,8 +8,8 @@ import ListadoPaciente from "./components/ListadoPaciente"
 function App() {
 
   return (
-    
     <>
+
       <div className="conteiner mx-auto mt-10">
         
         <Header />
