@@ -36,6 +36,15 @@ function Paciente({paciente}){
                     {paciente.sintomas}
                 </span>
             </p>
+
+            <div className="flex justify-center mt-10">
+                <button type="button" className="mr-20 y-2 px-10  bg-red-500 hover:bg-red-800 text-white  uppercase font-bold rounded-lg">
+                    Editar
+                </button>
+                <button type="button" className="py-2 px-10 bg-red-500 hover:bg-red-800 text-white  uppercase font-bold rounded-lg">
+                    Eliminar
+                </button>
+            </div>
         </div>
     )
 }
