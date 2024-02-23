@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react';
+import Error from './Error';
 
-function Formulario(){
+function Formulario({ pacientes, setPacientes}){
     const [nombreMascota, setNombreMascota] = useState('');
     const [nombreDelPropietario, setNombreDelPropietario] = useState('');
     const [emailDelPropietario, setEmailDelPropietario] = useState('');
@@ -9,17 +10,40 @@ function Formulario(){
 
     const [error, setError] = useState('');
 
+    const generarId = () => {
+        const random = Math.random().toString(36).substring(2);
+        const fecha = Date.now().toString(36);
+        return random + fecha;
+    }
+
     const handleSubmit = (e) => {
             e.preventDefault();
 
             if( [nombreMascota, nombreDelPropietario, emailDelPropietario, fechaDeIngreso, sintomas].includes('') ){
                 console.log("Formulario incompleto");
                 setError(true);
+                return;
             }
-            else{
-                console.log("Formulario completo");
-                setError(false);
+
+            setError(false);
+
+            //Creacion del objeto del paciente 
+            const objetoPaciente = {
+                nombreMascota, 
+                nombreDelPropietario, 
+                emailDelPropietario, 
+                fechaDeIngreso, 
+                sintomas,
+                id: generarId()
             }
+            setPacientes([...pacientes, objetoPaciente]);
+
+            setNombreMascota("");
+            setNombreDelPropietario("");
+            setEmailDelPropietario("");
+            setFechaDeIngreso("");
+            setSintomas("");
+            
         
     }
 
@@ -43,15 +67,7 @@ function Formulario(){
                 onSubmit={handleSubmit} 
                 className="bg-white shadow-md rounded-lg py-5 px-5 mt-5 ml-8 mb-20"
             >
-                { error &&
-                    (
-                        <div className='text-white bg-red-800 text-center p-3 uppercase m-3 rounded-lg '>
-                            <p>
-                                Todos los campos son obligatorios
-                            </p>
-                        </div>
-                    )
-                }
+                { error &&  <Error mensaje = "Todos los campos son obligatorios" /> }
                     
                 <div>
                     <label htmlFor="nombreMascota" className="block text-gray-700 uppercase font-bold ">

@@ -1,41 +1,39 @@
-function Paciente(){
+function Paciente({paciente}){
     return(
         
         <div className="bg-white  shadow-md px-5 py-5 mt-5 ml-8 rounded-lg mb-10 ">
             <p className="font-bold mb-3 text-gray-700 uppercase">
-                Nombre{" "}
+                Nombre:{"  "}
                 <span className="font-normal normal-case">
-                    Lobo
+                    {paciente.nombreMascota}
                 </span>
             </p>
 
             <p className="font-bold mb-3 text-gray-700 uppercase">
-                Propietario{" "}
+                Propietario:{"  "}
                 <span className="font-normal normal-case">
-                    Luis Eduardo
+                    {paciente.nombreDelPropietario}
                 </span>
             </p>
 
             <p className="font-bold mb-3 text-gray-700 uppercase">
-                Email{" "}
+                Email:{"  "}
                 <span className="font-normal normal-case">
-                    correo@gmail.com
+                    {paciente.emailDelPropietario}
                 </span>
             </p>
 
             <p className="font-bold mb-3 text-gray-700 uppercase">
-                Fecha de ingreso{" "}
+                Fecha de ingreso:{"  "}
                 <span className="font-normal normal-case">
-                    18 de febrero del 2024
+                    {paciente.fechaDeIngreso}
                 </span>
             </p>
 
             <p className="font-bold mb-3 text-gray-700 uppercase">
-                Sintomas{" "}
+                Sintomas:{"  "}
                 <span className="font-normal normal-case">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                    Corrupti fugit saepe vero perferendis sit eum ab soluta eligendi 
-                    tempora dolore, iure iusto laboriosam aliquam porro repellat incidunt magni sed? Rem.
+                    {paciente.sintomas}
                 </span>
             </p>
         </div>
