@@ -1,4 +1,15 @@
-function Paciente({paciente}){
+function Paciente({paciente,setPaciente,eliminarPaciente}){
+
+    const handleEliminar = () =>
+    {
+        const respuesta = confirm("Desea eliminar este paciente ?")
+
+        if(respuesta)
+        {
+            eliminarPaciente(paciente.id)
+        }
+    }
+
     return(
         
         <div className="bg-white  shadow-md px-5 py-5 mt-5 ml-8 rounded-lg mb-10 ">
@@ -38,10 +49,16 @@ function Paciente({paciente}){
             </p>
 
             <div className="flex justify-center mt-10">
-                <button type="button" className="mr-20 y-2 px-10  bg-red-500 hover:bg-red-800 text-white  uppercase font-bold rounded-lg">
+                <button type="button" className="mr-20 y-2 px-10  bg-red-500 hover:bg-red-800 text-white  
+                    uppercase font-bold rounded-lg"
+                    onClick={() => setPaciente(paciente)}
+                    >
                     Editar
                 </button>
-                <button type="button" className="py-2 px-10 bg-red-500 hover:bg-red-800 text-white  uppercase font-bold rounded-lg">
+                <button type="button" className="py-2 px-10 bg-red-500 hover:bg-red-800 text-white  
+                    uppercase font-bold rounded-lg"
+                    onClick={handleEliminar}
+                    >
                     Eliminar
                 </button>
             </div>

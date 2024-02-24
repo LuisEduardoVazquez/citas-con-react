@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import Error from './Error';
 
-function Formulario({ pacientes, setPacientes}){
+function Formulario({ pacientes, setPacientes, paciente, setPaciente}){
     const [nombreMascota, setNombreMascota] = useState('');
     const [nombreDelPropietario, setNombreDelPropietario] = useState('');
     const [emailDelPropietario, setEmailDelPropietario] = useState('');
@@ -9,6 +9,21 @@ function Formulario({ pacientes, setPacientes}){
     const [sintomas, setSintomas] = useState('');
 
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        if(Object.keys(paciente).length > 0)
+        {
+            setNombreMascota(paciente.nombreMascota);
+            setNombreDelPropietario(paciente.nombreDelPropietario);
+            setEmailDelPropietario(paciente.emailDelPropietario);
+            setFechaDeIngreso(paciente.fechaDeIngreso);
+            setSintomas(paciente.sintomas);
+        }
+        
+        
+    },[paciente])
+
+    
 
     const generarId = () => {
         const random = Math.random().toString(36).substring(2);
@@ -33,10 +48,26 @@ function Formulario({ pacientes, setPacientes}){
                 nombreDelPropietario, 
                 emailDelPropietario, 
                 fechaDeIngreso, 
-                sintomas,
-                id: generarId()
+                sintomas
+                
             }
-            setPacientes([...pacientes, objetoPaciente]);
+
+            if(paciente.id){
+
+                objetoPaciente.id = paciente.id
+                const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === 
+                paciente.id ? objetoPaciente : pacienteState) 
+                setPacientes(pacientesActualizados)
+
+                setPaciente({})
+
+            }
+            else{
+                
+                objetoPaciente.id = generarId();
+                setPacientes([...pacientes, objetoPaciente]);
+            }
+            
 
             setNombreMascota("");
             setNombreDelPropietario("");
@@ -163,7 +194,7 @@ function Formulario({ pacientes, setPacientes}){
                     type="submit"
 
                     className="bg-red-500 w-full p-3 text-black rounded-md font-bold uppercase hover:bg-red-700"
-                    value="Agregar paciente"
+                    value= { paciente.id ? "Editar paciente": "Agregar paciente"}
                     
 
                 />
